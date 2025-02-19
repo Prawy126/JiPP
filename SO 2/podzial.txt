@@ -1,0 +1,64 @@
+* Metoda 1
+
+* Srednia arytmetyczna pierwszego i ostatniego indeksu tablicy.
+
+- tablica parzysta
+
+ 0  1  2  3
+[ ][ ][ ][ ]
+ i  s     j
+
+s = (i + j) / 2
+s = (0 + 3) / 2 = 1
+
+srodek znajduje sie w lewej polowce tablicy
+
+Lewa  polowa: {i, s}   = {0, 1}
+Prawa polowa: {s+1, j} = {2, 3}
+
+- tablica nieparzysta
+
+ 0  1  2  3  4
+[ ][ ][ ][ ][ ]
+ i     s     j
+
+s = (i + j) / 2
+s = (0 + 4) / 2 = 2
+
+srodek znajduje sie w srodku tablicy
+
+Lewa  polowa: {i, s}   = {0, 2}
+Prawa polowa: {s+1, j} = {3, 4}
+
+* Metoda 2
+
+* Polowa dlugosci tablicy.
+
+- tablica parzysta
+
+ 0  1  2  3
+[ ][ ][ ][ ]
+ i     s  j
+
+s = (j - i + 1) / 2
+s = (3 - 0 + 1) / 2 = 2
+
+srodek znajduje sie w prawej polowce tablicy
+
+Lewa  polowa: {i, s-1} = {0, 1}
+Prawa polowa: {s, j}   = {2, 3}
+
+- tablica nieparzysta
+
+ 0  1  2  3  4
+[ ][ ][ ][ ][ ]
+ i     s     j
+
+s = (j - i + 1) / 2
+s = (4 - 0 + 1) / 2 = 2
+
+srodek znajduje sie w srodku tablicy
+
+Lewa  polowa: {i, s-1} = {0, 1}
+Prawa polowa: {s, j}   = {2, 4}
+
