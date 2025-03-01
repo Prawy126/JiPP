@@ -35,7 +35,10 @@ ghci> f8 21
 63
 -}
 
-
+{-
+Zadanie 2.7
+Zdefiniuj modu³ Triangle i umieœæ w nim definicje funkcji trArea1, trArea2 i trArea3, które wyznaczaj¹ pole powierzchni trójk¹ta, przy czym ka¿da z tych funkcji wykorzystuje inny wzór na pole trójk¹ta.
+-}
 
 -- Pole trójk¹ta przy u¿yciu podstawy i wysokoœci
 trArea1 :: Floating a => a -> a -> a
@@ -43,10 +46,22 @@ trArea1 base height = 0.5 * base * height
 
 -- Pole trójk¹ta przy u¿yciu wzoru Herona (dla trzech boków)
 trArea2 :: Floating a => a -> a -> a -> a
-trArea2 a b c = 
+trArea2 a b c =
   let s = (a + b + c) / 2
   in sqrt (s * (s - a) * (s - b) * (s - c))
 
 -- Pole trójk¹ta przy u¿yciu dwóch boków i k¹ta (k¹t w radianach)
 trArea3 :: Floating a => a -> a -> a -> a
 trArea3 a b angle = 0.5 * a * b * sin angle
+
+{-
+ghci> trArea1 23 12
+138.0
+ghci> trArea1 10 20
+100.0
+ghci> trArea2 10 20 15
+72.61843774138907
+ghci> trArea3 10 20 0.5
+47.942553860420304
+ghci>
+-}
