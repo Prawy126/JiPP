@@ -65,3 +65,67 @@ ghci> trArea3 10 20 0.5
 47.942553860420304
 ghci>
 -}
+
+-- 3.1
+f x | x < -10 = x*x
+    | -10 <= x && x < 0 = sin x
+    | 0 <= x && x <= 2 = sqrt x
+
+{-
+ghci> f (-15)
+225.0
+ghci> f 5
+*** Exception: lab3.hs:(41,1)-(43,31): Non-exhaustive patterns in function f
+
+ghci> f (-5)
+0.9589242746631385
+ghci> f 1
+1.0
+ghci> f 2
+1.4142135623730951
+-}
+
+f' x | x < -10 = x*x
+    | -10 <= x && x < 0 = sin x
+    | 0 <= x && x <= 2 = sqrt x
+    | otherwise = undefined
+    
+{-
+ghci> f' (-15)
+225.0
+ghci> f' (-5)
+0.9589242746631385
+ghci> f' 1
+1.0
+ghci> f' 2
+1.4142135623730951
+ghci> f' 5
+*** Exception: Prelude.undefined
+CallStack (from HasCallStack):
+  undefined, called at lab3.hs:52:19 in main:Math
+-}
+
+{- Task 2 *
+
+Define an analogous function f1'' without the use of logical operators.
+-}
+
+
+f1'' x = if x < -10 then x * x
+         else if x <= 0 then sin x
+         else sqrt x
+
+{-
+ghci> f1'' (-15)
+225.0
+ghci> f1'' (-5)
+0.9589242746631385
+ghci> f1'' 2
+1.4142135623730951
+ghci> f'' 5
+
+<interactive>:8:1: error:
+    Variable not in scope: f'' :: t0 -> t
+    Suggested fix:
+      Perhaps use one of these: f' (line 59), f1'' (line 86)
+-}
