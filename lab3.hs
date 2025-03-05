@@ -109,6 +109,93 @@ silnia n | n == 0 = 1
 
 -- function binomialCoefficient must check the condition 0 <= k <= n
 
-binomialCoefficient k n | 0 <= k && k <= n =  
+binomialCoefficient k n | 0 <= k && k <= n = silnia n  `div` (silnia k * silnia (n - k))
 
+{-
+*Math> binomialCoefficient 3 5
+10
+-}
 
+-- 3.4
+
+{-
+*Math> :t rem
+rem :: Integral a => a -> a -> a
+*Math> rem 3 2
+1
+*Math> rem 3 3
+0
+-}
+
+divides :: Int -> Int -> Bool
+divides k n = rem n k == 0
+
+{-
+*Math> divides 4 2
+False
+*Math> divides 2 4
+True
+*Math> divides 3 9
+True
+-}
+seq' 1 = 3
+seq' 2 = 4
+seq' n = 0.5 * seq'(n-1) + 2 * seq'(n-2)
+
+{-
+*Math> seq' 1
+3.0
+*Math> seq' 2
+4.0
+*Math> seq' 5
+22.0
+*Math>
+-}
+
+--3.7
+
+{-
+*Math> 3 * 5
+15
+*Math> (*) 3 5
+15
+*Math> :t gcd
+gcd :: Integral a => a -> a -> a
+*Math> gcd 12 6
+6
+*Math> gcd 15 8
+1
+-}
+
+-- complete the definition
+
+(><)::Integral a => a -> a -> Bool
+x >< y = gcd x y == 1
+
+{-
+*Math> :t (><)
+(><) :: Integral a => a -> a -> Bool
+*Math> 12 >< 6
+False
+*Math> 15 >< 8
+True
+-}
+
+-- 3.8.3
+
+{-
+z1 = a + b*i   i*i = -1
+z2 = c + d*i
+
+z1 * z2 = (a + b*i)*(c + d*i) = a*c + a*d*i + b*i*c + b*d*i* = a*c - b*d + i*(a*d + b*c)*i
+-}
+
+infixl 7 *.
+(*.) :: (Double, Double) -> (Double, Double) -> (Double, Double)
+(a,b) *. (c,d) = ( a*c - b*d, a*d+b*c)
+
+{-
+Ok, modules loaded: Math.
+*Math> (1,2) *. (2,4)
+(-6.0,8.0)
+-}
