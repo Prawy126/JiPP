@@ -8,27 +8,27 @@ module Triangle where
 (*) f8 potraja pobierany argument.
 -}
 
-f5 a = a < 100
+f5 a = a > 100
 
-f6 a = a `rem` 5
+f6 a = 5 `rem` a
 
-f7 a = a `div` 8
+f7 a = 8 `div` a
 
 f8 a = 3 * a
 
 {-
 ghci> f5 1
-True
-ghci> f5 101
 False
+ghci> f5 101
+True
 ghci> f6 5
 0
 ghci> f6 6
-1
+5
 ghci> f7 8
 1
 ghci> f7 17
-2
+0
 ghci> f8 3
 9
 ghci> f8 21
@@ -40,17 +40,14 @@ Zadanie 2.7
 Zdefiniuj modu³ Triangle i umieœæ w nim definicje funkcji trArea1, trArea2 i trArea3, które wyznaczaj¹ pole powierzchni trójk¹ta, przy czym ka¿da z tych funkcji wykorzystuje inny wzór na pole trójk¹ta.
 -}
 
--- Pole trójk¹ta przy u¿yciu podstawy i wysokoœci
 trArea1 :: Floating a => a -> a -> a
 trArea1 base height = 0.5 * base * height
 
--- Pole trójk¹ta przy u¿yciu wzoru Herona (dla trzech boków)
 trArea2 :: Floating a => a -> a -> a -> a
 trArea2 a b c =
   let s = (a + b + c) / 2
   in sqrt (s * (s - a) * (s - b) * (s - c))
 
--- Pole trójk¹ta przy u¿yciu dwóch boków i k¹ta (k¹t w radianach)
 trArea3 :: Floating a => a -> a -> a -> a
 trArea3 a b angle = 0.5 * a * b * sin angle
 
