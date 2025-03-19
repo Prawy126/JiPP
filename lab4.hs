@@ -215,6 +215,8 @@ string2int'' x = show x
 {-
 *Lists> string2int "2"
 2
+*Lists> string2int' "2"
+2
 *Lists> string2int'' 2
 "2"
 -}
