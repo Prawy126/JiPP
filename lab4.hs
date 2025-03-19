@@ -206,11 +206,15 @@ show :: Show a => a -> String
 -}
 
 string2int x = read x :: Int
-string2int' x = show x
+
+string2int' :: String -> Int
+string2int' x = read x
+
+string2int'' x = show x
 
 {-
 *Lists> string2int "2"
 2
-*Lists> string2int' 2
+*Lists> string2int'' 2
 "2"
 -}
