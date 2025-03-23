@@ -65,18 +65,84 @@ Analiza wywo³ania sum1 [3,5,7,9]:
    Ostateczny wynik: 24
 -}
 
-sum2 :: Num a => [a] -> a
-sum2 xs = sum [x | (x, i) <- zip xs [0..], even i]
+-- 4.2.2 zdefiniuj funkcjê sum2, która jako argument przyjmuje listê liczb i zwraca sumê elementów o indeksach parzystych
 
-sum3 :: Num a => [a] -> a
-sum3 xs = sum [x | (x, i) <- zip xs [0..], (i + 1) `mod` 3 == 0]
+sum2 [] = 0
+sum2 (x:_:xs) = x + sum2 xs
+sum2 (x:[]) = x
 
 {-
-ghci> sum2 [1,2,3,4,5,6]
-9
-ghci> sum2 [10,20,30,40,50,60, 70]
-160
+ghci> sum2 [1]
+1
+ghci> sum2 [1,2]
+1
+ghci> sum2 [1,2,3]
+4
 -}
+
+-- 4.2.3 funkcjê sum3, która jako argument przyjmuje listê liczb i zwraca sumê elementów o indeksach 3, 6, 9, …;
+
+sum3 [] = 0
+sum3 [_] = 0
+sum3 [_, _] = 0
+sum3 (_:_:x:xs) = x + sum3 xs
+
+{-
+ghci> sum3 []
+0
+ghci> sum3 [1]
+0
+ghci> sum3 [1,2]
+0
+ghci> sum3 [1,2,3]
+3
+-}
+
+{- Task 3 *
+
+Analyze the function call countLower "Bob".
+
+Follow the examples in silnia.pps and on the sites:
+
+https://balois.pl/jipp/haskell/listy.htm
+https://balois.pl/jipp/haskell/fold.htm
+-}
+
+{-
+Analiza wywo³ania countLower "Bob":
+
+1. Rozbijamy ci¹g znaków na listê:
+   "Bob" › ['B', 'o', 'b']
+
+2. Filtrujemy ma³e litery za pomoc¹ filter isLower:
+   - 'B' › nie jest ma³¹ liter¹ › odrzucamy
+   - 'o' › jest ma³¹ liter¹ › zostaje
+   - 'b' › jest ma³¹ liter¹ › zostaje
+   Wynik: ['o', 'b']
+
+3. Liczymy d³ugoœæ przefiltrowanej listy:
+   length ['o', 'b'] › 2
+
+Wynik koñcowy:
+countLower "Bob" = 2
+-}
+
+--4.3 Zdefiniuj funkcjê countLowerUpper, wyznaczaj¹c¹ liczbê ma³ych i wielkich liter w przekazanym jej tekœcie wejœciowym. Funkcja powinna byæ nastêpuj¹cego typu countLowerUpper :: String › (Int, Int).
+
+countLowerUpper :: String -> (Int, Int)
+countLowerUpper [] = (0, 0)
+countLowerUpper (x:xs) | 'a' <= x && x <= 'z' = (l + 1, u)
+                       | 'A' <= x && x <= 'Z' = (l, u + 1)
+                       | otherwise            = (l, u)
+                       where (l, u) = countLowerUpper xs
+
+{-
+countLowerUpper ""
+(0,0)
+ghci> countLowerUpper "Ala mA KoTa"
+(5,4)
+-}
+
 -- 4.4
 
 {-
@@ -93,6 +159,8 @@ string2bools :: String -> [Bool]
 string2bools = map isLower
 
 {-
+ghci> string2bools ""
+[]
 ghci> string2bools "Hello"
 [False,True,True,True,True]
 ghci> string2bools "ABCxyz"
