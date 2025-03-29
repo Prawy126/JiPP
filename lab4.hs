@@ -215,8 +215,73 @@ string2int'' x = show x
 {-
 *Lists> string2int "2"
 2
-*Losts> string2int "2"
+*Lists> string2int' "2"
 2
 *Lists> string2int'' 2
 "2"
 -}
+
+-- 4.7
+
+{-
+*Lists> :t sum
+sum :: (Num a, Foldable t) => t a -> a
+*Lists> :t product
+product :: (Num a, Foldable t) => t a -> a
+*Lists> sum [1,3,5]
+9
+*Lists> product [1,3,5]
+15
+*Lists> [1..5]
+[1,2,3,4,5]
+*Lists> [n | n <- [1..5]]
+[1,2,3,4,5]
+-}
+
+-- 4.7.1
+
+{-
+suma1 = 1 + 1/2 + 1/3 + ... + 1/100
+-}
+
+-- solution here
+
+suma1 = sum ( map (1/)[1..100])    -- with the use of section, slide 11/71
+
+suma1' = sum (map (\ x -> 1/x) [1..100])
+
+suma1'' = sum[1/x | x <- [1..100]]
+{-
+*Lists> suma1
+5.187377517639621
+*Lists> suma1'
+5.187377517639621
+*Lists> suma1''
+5.187377517639621
+-}
+
+-- 4.7.2
+
+-- solution here
+
+iloczyn1 = product ( map (\ x -> ((1+x)/(2+x))) [1..50] )
+ 
+{-
+*Lists> iloczyn1
+3.846153846153846e-2
+-}
+ 
+iloczyn1' = product [(1+x)/(2+x) | x <- [1..50]]
+ 
+{-
+*Lists> iloczyn1'
+3.846153846153846e-2
+-}
+ 
+iloczyn1'' = foldr (*) 1 [(1+x)/(2+x) | x <- [1..50]]
+ 
+{-
+*Lists> iloczyn1''
+3.846153846153844e-2
+-}
+
