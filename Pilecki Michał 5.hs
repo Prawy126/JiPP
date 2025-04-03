@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module Lists where
 
 import Data.Char
@@ -31,21 +32,21 @@ ghci>
 -- 4.8
 
 {-
-W module Lists umieœæ definicje funkcji factors i prime ze slajdu 45. Przetestuj ich dzia³anie. Przeanalizuj dzia³anie poni¿szej funkcji:
+W module Lists umieï¿½ï¿½ definicje funkcji factors i prime ze slajdu 45. Przetestuj ich dziaï¿½anie. Przeanalizuj dziaï¿½anie poniï¿½szej funkcji:
 
 primes :: [Integer]
 primes = filter prime [2 ..]
-Funkcjê umieœæ w module Lists. Aby zatrzymaæ obliczenia u¿yj kombinacji Ctrl + C.
+Funkcjï¿½ umieï¿½ï¿½ w module Lists. Aby zatrzymaï¿½ obliczenia uï¿½yj kombinacji Ctrl + C.
 
-Do modu³u dodaj funkcjê pairs i przeanalizuj jej dzia³anie na przyk³adowych listach z liczbami ca³kowitymi:
+Do moduï¿½u dodaj funkcjï¿½ pairs i przeanalizuj jej dziaï¿½anie na przykï¿½adowych listach z liczbami caï¿½kowitymi:
 
 pairs :: [Integer] -> [(Integer, Integer)]
 pairs (x:y:[])  | x + 2 == y = [(x,y)]
                 | otherwise  = []
 pairs (x:y:xys) | x + 2 == y = (x,y) : pairs (y:xys)
                 | otherwise  = pairs (y:xys)
-(*) Zdefiniuj funkcjê primePairs zwracaj¹c¹ listê par liczb pierwszych takich, ¿e drugi element pary jest wiêkszy o 2 od pierwszego.
-(*) Zdefiniuj funkcjê primeTriples zwracaj¹c¹ listê trójek liczb pierwszych takich, ¿e drugi element trójki jest wiêkszy o 2 od pierwszego, a trzeci jest wiêkszy o dwa od drugiego.
+(*) Zdefiniuj funkcjï¿½ primePairs zwracajï¿½cï¿½ listï¿½ par liczb pierwszych takich, ï¿½e drugi element pary jest wiï¿½kszy o 2 od pierwszego.
+(*) Zdefiniuj funkcjï¿½ primeTriples zwracajï¿½cï¿½ listï¿½ trï¿½jek liczb pierwszych takich, ï¿½e drugi element trï¿½jki jest wiï¿½kszy o 2 od pierwszego, a trzeci jest wiï¿½kszy o dwa od drugiego.
 -}
 
 primes :: [Integer]
@@ -140,4 +141,3 @@ ghci> cubeRoot 125 0.01
 ghci> cubeRoot 2 0.01
 1.259933493449977
 ghci>
--}

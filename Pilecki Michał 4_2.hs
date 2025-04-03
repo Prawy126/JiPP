@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module Lists where
 
 import Data.Char(isLower)
@@ -18,16 +19,16 @@ sum1 [] = 0
 sum1 (x:xs) = x + sum1 xs
 
 {-
-Analiza wywo³ania sum1 [3,5,7]:
+Analiza wywoï¿½ania sum1 [3,5,7]:
 
 1. sum1 [3,5,7]
-   = 3 + sum1 [5,7]  -- pierwszy element 3, przekazujemy resztê listy [5,7]
+   = 3 + sum1 [5,7]  -- pierwszy element 3, przekazujemy resztï¿½ listy [5,7]
 
 2. sum1 [5,7]
-   = 5 + sum1 [7]    -- pierwszy element 5, przekazujemy resztê listy [7]
+   = 5 + sum1 [7]    -- pierwszy element 5, przekazujemy resztï¿½ listy [7]
 
 3. sum1 [7]
-   = 7 + sum1 []     -- pierwszy element 7, przekazujemy resztê listy []
+   = 7 + sum1 []     -- pierwszy element 7, przekazujemy resztï¿½ listy []
 
 4. sum1 []
    = 0               -- warunek bazowy, zwracamy 0
@@ -40,7 +41,7 @@ Analiza wywo³ania sum1 [3,5,7]:
 -}
 
 {- 
-Analiza wywo³ania sum1 [3,5,7,9]:
+Analiza wywoï¿½ania sum1 [3,5,7,9]:
 
 1. sum1 [3,5,7,9]
    = 3 + sum1 [5,7,9]
@@ -65,7 +66,7 @@ Analiza wywo³ania sum1 [3,5,7,9]:
    Ostateczny wynik: 24
 -}
 
--- 4.2.2 zdefiniuj funkcjê sum2, która jako argument przyjmuje listê liczb i zwraca sumê elementów o indeksach parzystych
+-- 4.2.2 zdefiniuj funkcjï¿½ sum2, ktï¿½ra jako argument przyjmuje listï¿½ liczb i zwraca sumï¿½ elementï¿½w o indeksach parzystych
 
 sum2 [] = 0
 sum2 (x:_:xs) = x + sum2 xs
@@ -80,7 +81,7 @@ ghci> sum2 [1,2,3]
 4
 -}
 
--- 4.2.3 funkcjê sum3, która jako argument przyjmuje listê liczb i zwraca sumê elementów o indeksach 3, 6, 9, …;
+-- 4.2.3 funkcjï¿½ sum3, ktï¿½ra jako argument przyjmuje listï¿½ liczb i zwraca sumï¿½ elementï¿½w o indeksach 3, 6, 9, ï¿½;
 
 sum3 [] = 0
 sum3 [_] = 0
@@ -109,25 +110,25 @@ https://balois.pl/jipp/haskell/fold.htm
 -}
 
 {-
-Analiza wywo³ania countLower "Bob":
+Analiza wywoï¿½ania countLower "Bob":
 
-1. Rozbijamy ci¹g znaków na listê:
-   "Bob" › ['B', 'o', 'b']
+1. Rozbijamy ciï¿½g znakï¿½w na listï¿½:
+   "Bob" ï¿½ ['B', 'o', 'b']
 
-2. Filtrujemy ma³e litery za pomoc¹ filter isLower:
-   - 'B' › nie jest ma³¹ liter¹ › odrzucamy
-   - 'o' › jest ma³¹ liter¹ › zostaje
-   - 'b' › jest ma³¹ liter¹ › zostaje
+2. Filtrujemy maï¿½e litery za pomocï¿½ filter isLower:
+   - 'B' ï¿½ nie jest maï¿½ï¿½ literï¿½ ï¿½ odrzucamy
+   - 'o' ï¿½ jest maï¿½ï¿½ literï¿½ ï¿½ zostaje
+   - 'b' ï¿½ jest maï¿½ï¿½ literï¿½ ï¿½ zostaje
    Wynik: ['o', 'b']
 
-3. Liczymy d³ugoœæ przefiltrowanej listy:
-   length ['o', 'b'] › 2
+3. Liczymy dï¿½ugoï¿½ï¿½ przefiltrowanej listy:
+   length ['o', 'b'] ï¿½ 2
 
-Wynik koñcowy:
+Wynik koï¿½cowy:
 countLower "Bob" = 2
 -}
 
---4.3 Zdefiniuj funkcjê countLowerUpper, wyznaczaj¹c¹ liczbê ma³ych i wielkich liter w przekazanym jej tekœcie wejœciowym. Funkcja powinna byæ nastêpuj¹cego typu countLowerUpper :: String › (Int, Int).
+--4.3 Zdefiniuj funkcjï¿½ countLowerUpper, wyznaczajï¿½cï¿½ liczbï¿½ maï¿½ych i wielkich liter w przekazanym jej tekï¿½cie wejï¿½ciowym. Funkcja powinna byï¿½ nastï¿½pujï¿½cego typu countLowerUpper :: String ï¿½ (Int, Int).
 
 countLowerUpper :: String -> (Int, Int)
 countLowerUpper [] = (0, 0)
@@ -146,11 +147,11 @@ ghci> countLowerUpper "Ala mA KoTa"
 -- 4.4
 
 {-
-(*) Zdefiniuj funkcjê string2bools, która listê znaków zastêpuje list¹ wartoœci logicznych okreœlaj¹cych, czy oryginalny element by³ ma³¹ liter¹, czy te¿ nie. Funkcjê umieœæ w module Lists.
+(*) Zdefiniuj funkcjï¿½ string2bools, ktï¿½ra listï¿½ znakï¿½w zastï¿½puje listï¿½ wartoï¿½ci logicznych okreï¿½lajï¿½cych, czy oryginalny element byï¿½ maï¿½ï¿½ literï¿½, czy teï¿½ nie. Funkcjï¿½ umieï¿½ï¿½ w module Lists.
 
-Wskazówka:
+Wskazï¿½wka:
 
-Do modu³u Lists poni¿ej s³owa where dodaj poni¿sz¹ liniê:
+Do moduï¿½u Lists poniï¿½ej sï¿½owa where dodaj poniï¿½szï¿½ liniï¿½:
 
 import Data.Char
 -}
@@ -180,21 +181,21 @@ https://balois.pl/jipp/haskell/fold.htm
 -}
 
 {-
-1. Rozwijamy wywo³anie countLower "Bob":
+1. Rozwijamy wywoï¿½anie countLower "Bob":
    countLower "Bob"
    = length (filter isLower "Bob")
 
 2. Funkcja filter isLower "Bob":
-   "Bob" › ['B', 'o', 'b']
+   "Bob" ï¿½ ['B', 'o', 'b']
 
-   - 'B' › NIE jest ma³¹ liter¹ › odrzucamy
-   - 'o' › JEST ma³¹ liter¹ › zostaje
-   - 'b' › JEST ma³¹ liter¹ › zostaje
+   - 'B' ï¿½ NIE jest maï¿½ï¿½ literï¿½ ï¿½ odrzucamy
+   - 'o' ï¿½ JEST maï¿½ï¿½ literï¿½ ï¿½ zostaje
+   - 'b' ï¿½ JEST maï¿½ï¿½ literï¿½ ï¿½ zostaje
 
-   Wynik dzia³ania filter:
+   Wynik dziaï¿½ania filter:
    = "ob" (lista ['o', 'b'])
 
-3. Teraz obliczamy d³ugoœæ wyniku:
+3. Teraz obliczamy dï¿½ugoï¿½ï¿½ wyniku:
    length "ob" = 2
 
 Ostateczny wynik:
@@ -203,8 +204,8 @@ Ostateczny wynik:
 
 -- 4.5
 {-
-(*) funckja ltx listê elementów z listy wejœciowych mniejszych lub równych x.
-(*) funkcja cltx liczbê elementów listy mniejszych od x;
+(*) funckja ltx listï¿½ elementï¿½w z listy wejï¿½ciowych mniejszych lub rï¿½wnych x.
+(*) funkcja cltx liczbï¿½ elementï¿½w listy mniejszych od x;
 -}
 
 ltx :: Ord a => a -> [a] -> [a]
@@ -222,4 +223,3 @@ ghci> cltx 5 [3,7,1,5,9,4]
 3
 ghci> cltx 10 [15,8,20,3]
 2
--}

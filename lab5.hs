@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- 5.2
 
 {-
@@ -43,22 +44,22 @@ What is the type of expression (b - a)?
 Float
 
 Why do we need to use the function fromIntegral in the expression for h?
-poniewa¿ bêdzie niezgodnoœæ typów
+poniewaï¿½ bï¿½dzie niezgodnoï¿½ï¿½ typï¿½w
 
 Why do we need to use the function fromIntegral in the expression for points?
-poniewa¿ bêdzie niezgodnoœæ typów (I jest ca³k
+poniewaï¿½ bï¿½dzie niezgodnoï¿½ï¿½ typï¿½w (I jest caï¿½k
 
 What is the type of h?
 Fractional
 
 What is the type of points?
-elementy nale¿ace do klasy fractional
+elementy naleï¿½ace do klasy fractional
 
 What does the constant h stand for?
 ???
 
 What does the constant points stand for?
-lista punktów
+lista punktï¿½w
 -}
 
 rectangleRule :: (Float -> Float) -> Float -> Float -> Int -> Float
@@ -324,10 +325,10 @@ tree2list (Node x left right) = tree2list left ++ [x] ++ tree2list right
 
 {-
 What does m stand for?
-index œrodka
+index ï¿½rodka
 
 What does x stand for?
-to jest wartoœæ œrodka
+to jest wartoï¿½ï¿½ ï¿½rodka
 
               m
         0  1  2  3
