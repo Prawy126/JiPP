@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 module Lists where
 
 import Data.Char
