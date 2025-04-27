@@ -2,7 +2,7 @@ leg :: Int -> Int -> Int
 leg a b | a < b = 1
         | a > b = -1
         | a == b = 0 
-        
+
 zespolona :: [Double] -> [Double] -> [Double]
 zespolona [a, b] [c, d] = [a * c - b * d, a * d + b * c]
 
@@ -25,5 +25,5 @@ sumTree :: Num a => Tree a -> a
 sumTree Null = 0
 sumTree (Leaf x) = x
 sumTree (Node x left right) = x + sumTree left + sumTree right
-tree = Node 1 (Leaf 2) (Node 3 (Leaf 4) Null)
+
 
