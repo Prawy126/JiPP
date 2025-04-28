@@ -23,7 +23,6 @@ dec x | x `elem` ['0'..'9'] = ord x - ord '0'
 (**.) :: (Double, Double) -> (Double, Double) -> (Double, Double)
 (a, b) **. (c, d) = (a*c - b*d, a*d + b*c)
 
-infixl 7 **.
 
 digits :: Integer -> Integer
 digits 0 = 1
@@ -45,8 +44,8 @@ areaRect :: Double -> Double -> Double
 areaRect length width = length * width
 
 -- Wersja z użyciem sekcji
-areaSection :: Double -> Double -> Double
-areaSection = (*) -- (*) jest sekcją operatora mnożenia
+areaSection2 :: Double -> Double -> Double
+areaSection2 = (*) -- (*) jest sekcją operatora mnożenia
 
 hexDigit :: Char -> Bool
 hexDigit x = x `elem` ['0'..'9'] ++ ['a'..'f'] ++ ['A'..'F']
@@ -55,10 +54,9 @@ isHexByte :: String -> Bool
 isHexByte [c1, c2] = hexDigit c1 && hexDigit c2
 isHexByte _ = False
 
-(**.) :: (Double, Double, Double) -> (Double, Double, Double) -> Double
-(a, b, c) **. (d, e, f) = a*d + b*e + c*f
+(***.) :: (Double, Double, Double) -> (Double, Double, Double) -> Double
+(a, b, c) ***. (d, e, f) = a*d + b*e + c*f
 
-infixl 4 **.
 
 factors :: Int -> [Int]
 factors n = aux n n
@@ -67,8 +65,6 @@ factors n = aux n n
     aux k m
       | m `mod` k == 0 = k : aux (k-1) m
       | otherwise = aux (k-1) m
-
-data Tree a = Leaf a | Node a (Tree a) (Tree a) | Null deriving Show
 
 evenLeafs :: Integral a => Tree a -> [a]
 evenLeafs Null = []
