@@ -1,5 +1,6 @@
 import Data.Char
 
+-- 2 gr
 -- Tradycyjna wersja (formuła Herona)
 areaHeron :: Double -> Double -> Double -> Double
 areaHeron a b c = sqrt (s * (s - a) * (s - b) * (s - c))
@@ -35,3 +36,41 @@ addOddNodes Null = 0
 addOddNodes (Leaf x) = if odd x then x else 0
 addOddNodes (Node x left right) = 
   (if odd x then x else 0) + addOddNodes left + addOddNodes right
+
+
+-- 1 gr
+
+-- Tradycyjna wersja
+areaRect :: Double -> Double -> Double
+areaRect length width = length * width
+
+-- Wersja z użyciem sekcji
+areaSection :: Double -> Double -> Double
+areaSection = (*) -- (*) jest sekcją operatora mnożenia
+
+hexDigit :: Char -> Bool
+hexDigit x = x `elem` ['0'..'9'] ++ ['a'..'f'] ++ ['A'..'F']
+
+isHexByte :: String -> Bool
+isHexByte [c1, c2] = hexDigit c1 && hexDigit c2
+isHexByte _ = False
+
+(**.) :: (Double, Double, Double) -> (Double, Double, Double) -> Double
+(a, b, c) **. (d, e, f) = a*d + b*e + c*f
+
+infixl 4 **.
+
+factors :: Int -> [Int]
+factors n = aux n n
+  where
+    aux 1 m = [1]
+    aux k m
+      | m `mod` k == 0 = k : aux (k-1) m
+      | otherwise = aux (k-1) m
+
+data Tree a = Leaf a | Node a (Tree a) (Tree a) | Null deriving Show
+
+evenLeafs :: Integral a => Tree a -> [a]
+evenLeafs Null = []
+evenLeafs (Leaf x) = if even x then [x] else []
+evenLeafs (Node _ left right) = evenLeafs left ++ evenLeafs right
