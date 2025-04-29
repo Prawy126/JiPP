@@ -45,7 +45,7 @@ areaRect length width = length * width
 
 -- Wersja z użyciem sekcji
 areaSection2 :: Double -> Double -> Double
-areaSection2 = (*) -- (*) jest sekcją operatora mnożenia
+areaSection2  = (*)  -- (*) jest sekcją operatora mnożenia
 
 hexDigit :: Char -> Bool
 hexDigit x = x `elem` ['0'..'9'] ++ ['a'..'f'] ++ ['A'..'F']
