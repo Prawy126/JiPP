@@ -10,14 +10,14 @@ areaHeron a b c = sqrt (s * (s - a) * (s - b) * (s - c))
 areaSection :: Double -> Double -> Double
 areaSection base height = (base * height) / 2
 
-byte2int :: String -> Int
-byte2int (c1:c2:[]) = dec c1 * 16 + dec c2
-byte2int _ = error "Niepoprawny ciąg"
-
-dec :: Char -> Int
-dec x | x `elem` ['0'..'9'] = ord x - ord '0'
-      | x `elem` ['A'..'F'] = ord x - ord 'A' + 10
-      | x `elem` ['a'..'f'] = ord x - ord 'a' + 10
+-- tutaj jest ta nowa lepsza wersja tego zadania
+hex2int :: String -> Int
+hex2int s = foldl (\acc c -> acc * 16 + val c) 0 s
+  where
+    val c
+      | c `elem` ['0'..'9'] = ord c - ord '0'
+      | c `elem` ['a'..'f'] = ord c - ord 'a' + 10
+      | c `elem` ['A'..'F'] = ord c - ord 'A' + 10
       | otherwise = error "Niepoprawny znak"
 
 (**.) :: (Double, Double) -> (Double, Double) -> (Double, Double)
@@ -25,7 +25,7 @@ dec x | x `elem` ['0'..'9'] = ord x - ord '0'
 
 
 digits :: Integer -> Integer
-digits 0 = 1
+digits 0 = 0
 digits x = 1 + digits (abs x `quot` 10)
 
 data Tree a = Leaf a | Node a (Tree a) (Tree a) | Null deriving Show
