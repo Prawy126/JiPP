@@ -1,0 +1,74 @@
+
+
+
+
+JiPP
+
+
+h2 {text-align:center}
+
+ul {list-style-type:none; padding-left:0}
+
+ul a {display:inline-block; width:62px}
+
+a:link    {text-decoration:none; color:#0000FF}
+a:visited {text-decoration:none; color:#0000FF}
+a:hover   {text-decoration:underline; color:#0000FF}
+
+
+
+JiPP
+
+
+Link 1 Laboratoria
+Link 2 Środowisko
+Link 3 Instalacja i setup
+Link 4 Installation and setup
+
+Link 5 Konfiguracja edytora Notepad++
+-->
+Link 5 Materiały dodatkowe
+
+
+Haskell
+
+
+Link 1 silnia.pps
+Link 2 Operatory
+Link 3 Rekurencja
+Link 4 Listy
+Link 5 until 
+Link 6 foldl i foldr
+Link 7 Dzielenie całkowite
+Link 8 Drzewa binarne 1
+Link 9 Drzewa binarne 2
+
+
+Prolog
+
+
+Link 1 Obcięcia
+Link 2 Wstęp
+Link 3 Listy
+Link 4 Permutacje
+
+
+Proste zadania
+
+
+Link 1 Haskell
+Link 2 Prolog
+Link 3 Java
+
+
+Kolokwia
+
+
+Link 1 Haskell
+Link 2 Prolog
+Link 3 Java
+Link 4 C
+
+
+Strona główna
+

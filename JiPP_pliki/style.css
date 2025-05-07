@@ -1,0 +1,18 @@
+body {font-size:12pt}
+
+h2#title {text-align:center}
+
+a#back       {text-decoration:none; color:blue}
+a#back:hover {text-decoration:underline; color:blue}
+
+pre {font-family:"courier new", courier, monospace; font-size:12pt}
+
+span.c {font-family:"courier new", courier, monospace; font-size:12pt}
+span.p {padding-left:0.5ex; padding-right:0.5ex}
+span.z {padding-right:1ex; font-weight:bold}
+
+.konsola {font-weight:bold; font-family:courier}
+
+div.z {border-style:solid; border-width:1px; padding-left:12pt; padding-right:12pt; margin:2em auto}
+
+div.z div.z {margin:1em auto}
