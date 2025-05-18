@@ -265,6 +265,13 @@ false.
 
 */
 
+% 8.8
+
+/*
+
+(*) Napisz program w Prologu rozwiązujący następujące zadanie: W pewnej liczbie trzycyfrowej zamieniono cyfrę dziesiątek z cyfrą jedności, tworząc w ten sposób nową liczbę trzycyfrową. Suma obu liczb jest równa 1187. Znajdź te liczby. Czy rozwiązanie jest jednoznaczne? 
+
+*/
 szukaj(Liczba1, Liczba2) :-
     between(100, 999, Liczba1),  
     A is Liczba1 // 100,          
@@ -283,5 +290,9 @@ X = 598,
 Y = 589 ;
 false.
 
+*/
+
+/*
+Nie, bo istnieją dwie liczby: 589 i 598, które zamieniają się miejscami i tworzą parę, których suma to 1187. Więc zadanie ma dokładnie dwa rozwiązania
 */
 
