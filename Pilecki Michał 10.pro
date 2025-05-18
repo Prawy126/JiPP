@@ -116,56 +116,60 @@ true.
 
 zabytki_ps(P) :-
     write('Zabytki w '), write(P), write(' i państwach sąsiednich:'), nl,
-    (   państwo_i_zabytek(P, Zabytek, Miasto, P)
-    ;   obok(P, Sąsiad), państwo_i_zabytek(Sąsiad, Zabytek, Miasto, Sąsiad)  
-    ),
-    write('- '), write(Zabytek), write(' ('), write(Miasto), write(', '), write(Państwo), write(')'), nl,
-    fail.
+    (
+        polozenie(Miasto, P),
+        gdzie(Zabytek, Miasto),
+        write('- '), write(Zabytek), write(' ('), write(Miasto), write(', '), write(P), write(')'), nl,
+        fail
+    ;
+        obok(P, Sasiad),
+        polozenie(Miasto, Sasiad),
+        gdzie(Zabytek, Miasto),
+        write('- '), write(Zabytek), write(' ('), write(Miasto), write(', '), write(Sasiad), write(')'), nl,
+        fail
+    ).
 zabytki_ps(_).
 
-państwo_i_zabytek(Państwo, Zabytek, Miasto, Państwo) :-
-    polozenie(Miasto, Państwo),
-    gdzie(Zabytek, Miasto).
 
 
 /*
 ?- zabytki_ps(P).
-Zabytki w _51688 i państwach sąsiednich:
-- Pałac w Wilanowie (Warszawa, _565)
-- Kolumna Zygmunta III Wazy (Warszawa, _527)
-- Wawel (Kraków, _565)
-- Sukiennice (Kraków, _565)
-- Kościół Mariacki (Kraków, _527)
-- Brama Brandenburska (Berlin, _565)
-- Reichstag (Berlin, _527)
-- Wieża Eiffla (Paryż, _565)
-- Katedra Notre-Dame (Paryż, _565)
-- Pałac Elizejski (Paryż, _527)
-- Bazylika Świętego Pawła za Murami (Rzym, _565)
-- Koloseum (Rzym, _565)
-- Zamek Świętego Anioła (Rzym, _527)
-- Bazylika Świętego Marka (Wenecja, _565)
-- Pałac Dogłów (Wenecja, _527)
-- Sagrada Familia (Barcelona, _527)
-- Pałac Kryształowy (Madryt, _527)
-- Tower Bridge (Londyn, _503)
-- Pałac Buckingham (Londyn, _503)
-- Katedra Świętego Pawła (Londyn, _465)
-- Brama Brandenburska (Berlin, _523)
-- Reichstag (Berlin, _485)
-- Wieża Eiffla (Paryż, _523)
-- Katedra Notre-Dame (Paryż, _523)
-- Pałac Elizejski (Paryż, _485)
-- Tower Bridge (Londyn, _523)
-- Pałac Buckingham (Londyn, _523)
-- Katedra Świętego Pawła (Londyn, _485)
-- Bazylika Świętego Pawła za Murami (Rzym, _585)
-- Koloseum (Rzym, _585)
-- Zamek Świętego Anioła (Rzym, _547)
-- Bazylika Świętego Marka (Wenecja, _523)
-- Pałac Dogłów (Wenecja, _485)
-- Sagrada Familia (Barcelona, _509)
-- Pałac Kryształowy (Madryt, _447)
+Zabytki w _31830 i państwach sąsiednich:
+- Pałac w Wilanowie (Warszawa, Polska)
+- Kolumna Zygmunta III Wazy (Warszawa, Polska)
+- Wawel (Kraków, Polska)
+- Sukiennice (Kraków, Polska)
+- Kościół Mariacki (Kraków, Polska)
+- Brama Brandenburska (Berlin, Niemcy)
+- Reichstag (Berlin, Niemcy)
+- Wieża Eiffla (Paryż, Francja)
+- Katedra Notre-Dame (Paryż, Francja)
+- Pałac Elizejski (Paryż, Francja)
+- Bazylika Świętego Pawła za Murami (Rzym, Włochy)
+- Koloseum (Rzym, Włochy)
+- Zamek Świętego Anioła (Rzym, Włochy)
+- Bazylika Świętego Marka (Wenecja, Włochy)
+- Pałac Dogłów (Wenecja, Włochy)
+- Sagrada Familia (Barcelona, Hiszpania)
+- Pałac Kryształowy (Madryt, Hiszpania)
+- Tower Bridge (Londyn, Wielka Brytania)
+- Pałac Buckingham (Londyn, Wielka Brytania)
+- Katedra Świętego Pawła (Londyn, Wielka Brytania)
+- Brama Brandenburska (Berlin, Niemcy)
+- Reichstag (Berlin, Niemcy)
+- Wieża Eiffla (Paryż, Francja)
+- Katedra Notre-Dame (Paryż, Francja)
+- Pałac Elizejski (Paryż, Francja)
+- Tower Bridge (Londyn, Wielka Brytania)
+- Pałac Buckingham (Londyn, Wielka Brytania)
+- Katedra Świętego Pawła (Londyn, Wielka Brytania)
+- Bazylika Świętego Pawła za Murami (Rzym, Włochy)
+- Koloseum (Rzym, Włochy)
+- Zamek Świętego Anioła (Rzym, Włochy)
+- Bazylika Świętego Marka (Wenecja, Włochy)
+- Pałac Dogłów (Wenecja, Włochy)
+- Sagrada Familia (Barcelona, Hiszpania)
+- Pałac Kryształowy (Madryt, Hiszpania)
 true.
 
 */
