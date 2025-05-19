@@ -200,7 +200,7 @@ X = lila,              X = lila,
 Y = tomek ;            Y = tomek ;          
 X = ania,              X = ania,            
 Y = max ;              Y = max ;            
-X = kasia,             X = kasia,           
+X = kasia,             X = kasia,
 Y = max ;              Y = max ;            
 X = radek,             X = radek,           
 Y = kasia ;            Y = kasia ;          
@@ -209,16 +209,296 @@ Y = ola ;              Y = ola ;
 X = kasia,             X = ania,            
 Y = ola ;              Y = tomek ;          
 X = radek,             X = kasia,           
-Y = ola ;              Y = ola ;            
+Y = ola ;              Y = ola ;
 X = ania,              X = kasia,           
 Y = tomek ;            Y = tomek ;          
-X = kasia,             X = radek,           
+X = kasia,             X = radek,
 Y = tomek ;            Y = max ;            
 X = radek,             X = radek,           
 Y = tomek ;            Y = ola ;            
 X = radek,             X = radek,           
-Y = max ;              Y = tomek ;          
+Y = max ;              Y = tomek ;
 false.                 false.
 
 
+*/
+
+potomek3(X,Y) :- rodzic(Y,X).
+potomek3(X,Y) :- potomek3(X,Z), rodzic(Y,Z). % It is not correct to place a recursive invocation as the first predicate in the body of a rule.
+
+/*
+2 ?- potomek3(X,Y).
+X = max,
+Y = ola ;
+X = max,
+Y = tomek ;
+X = lila,
+Y = tomek ;
+X = ania,
+Y = max ;
+X = kasia,
+Y = max ;
+X = radek,
+Y = kasia ;
+X = ania,
+Y = ola ;
+X = ania,
+Y = tomek ;
+X = kasia,
+Y = ola ;
+X = kasia,
+Y = tomek ;
+X = radek,
+Y = max ;
+X = radek,
+Y = ola ;
+X = radek,
+Y = tomek ;
+ERROR: Out of local stack
+*/
+
+panstwo('Polska').
+panstwo('Niemcy').
+panstwo('Francja').
+panstwo('W³ochy').
+panstwo('Hiszpania').
+panstwo('Wielka Brytania').
+
+miasto('Warszawa').
+miasto('Kraków').
+miasto('Berlin').
+miasto('Pary¿').
+miasto('Rzym').
+miasto('Wenecja').
+miasto('Barcelona').
+miasto('Madryt').
+miasto('Londyn').
+
+polozenie('Warszawa', 'Polska').
+polozenie('Kraków', 'Polska').
+polozenie('Berlin', 'Niemcy').
+polozenie('Pary¿', 'Francja').
+polozenie('Rzym', 'W³ochy').
+polozenie('Wenecja', 'W³ochy').
+polozenie('Barcelona', 'Hiszpania').
+polozenie('Madryt', 'Hiszpania').
+polozenie('Londyn', 'Wielka Brytania').
+
+zabytek('Pa³ac w Wilanowie').
+zabytek('Kolumna Zygmunta III Wazy').
+zabytek('Wawel').
+zabytek('Sukiennice').
+zabytek('Koœció³ Mariacki').
+zabytek('Brama Brandenburska').
+zabytek('Reichstag').
+zabytek('Wie¿a Eiffla').
+zabytek('Katedra Notre-Dame').
+zabytek('Pa³ac Elizejski').
+zabytek('Bazylika œw. Paw³a za Murami').
+zabytek('Koloseum').
+zabytek('Zamek Œwiêtego Anio³a').
+zabytek('Bazylika œw. Marka').
+zabytek('Pa³ac Do¿ów').
+zabytek('Sagrada Familia').
+zabytek('Pa³ac Kryszta³owy').
+zabytek('Tower Bridge').
+zabytek('Pa³ac Buckingham').
+zabytek('Katedra Œwiêtego Paw³a').
+
+gdzie('Pa³ac w Wilanowie', 'Warszawa').
+gdzie('Kolumna Zygmunta III Wazy', 'Warszawa').
+gdzie('Wawel', 'Kraków').
+gdzie('Sukiennice', 'Kraków').
+gdzie('Koœció³ Mariacki', 'Kraków').
+gdzie('Brama Brandenburska', 'Berlin').
+gdzie('Reichstag', 'Berlin').
+gdzie('Wie¿a Eiffla', 'Pary¿').
+gdzie('Katedra Notre-Dame', 'Pary¿').
+gdzie('Pa³ac Elizejski', 'Pary¿').
+gdzie('Bazylika œw. Paw³a za Murami', 'Rzym').
+gdzie('Koloseum', 'Rzym').
+gdzie('Zamek Œwiêtego Anio³a', 'Rzym').
+gdzie('Bazylika œw. Marka', 'Wenecja').
+gdzie('Pa³ac Do¿ów', 'Wenecja').
+gdzie('Sagrada Familia', 'Barcelona').
+gdzie('Pa³ac Kryszta³owy', 'Madryt').
+gdzie('Tower Bridge', 'Londyn').
+gdzie('Pa³ac Buckingham', 'Londyn').
+gdzie('Katedra Œwiêtego Paw³a', 'Londyn').
+
+obok('Polska', 'Niemcy').
+obok('Niemcy', 'Francja').
+obok('Francja', 'Wielka Brytania').
+obok('Francja', 'W³ochy').
+obok('Francja', 'Hiszpania').
+
+% 8.4
+
+/*
+Copy knowledge database from the site: http://www.balois.pl/jipp/help/
+*/
+
+/*
+Properties:
+
+country   C
+city      T
+monument  M
+
+Relations:
+
+location  T ~ C
+where     M ~ T
+next      C1 ~ C2
+*/
+
+zabytki_m(M) :-
+    miasto(M),
+    zabytek(Z),
+    gdzie(Z,M),
+    writeln(Z),
+    fail. 
+    
+    
+/*
+4 ?- zabytki_m('Berlin').
+Brama Brandenburska
+Reichstag
+false.
+*/  
+
+zabytki_mp(M) :-
+  miasto(M),
+  zabytek(Z),
+  panstwo(P),
+  gdzie(Z,M),
+  polozenie(M,P),
+  write(P), tab(1), write(M), tab(1), writeln(Z),
+  fail.
+
+/*
+11 ?- zabytki_mp('Berlin').
+Niemcy Berlin Brama Brandenburska
+Niemcy Berlin Reichstag
+false.
+*/
+
+% 8.5
+
+/*
+14 ?- X is 3*5.
+X = 15.
+
+15 ?- 1 + 3 = 3 + 1
+.
+false.
+
+16 ?- 1 + 3 = 1 + 3.
+true.
+
+17 ?- 1 + 3 =:= 1 + 3.
+true.
+
+18 ?- 1 + 3 =:= 3 + 1.
+true.
+*/
+
+fun(X, Y) :- Y is 2*X.
+
+/*
+1 ?- fun(5, Y).
+Y = 10.
+*/
+
+delta(A, B, C, D) :- D is B*B - 4*A*C.
+
+trojmian(A, B, C, X) :-
+    delta(A, B, C, D),
+    D > 0,
+    X1 is (-B - sqrt(D)) / (2*A),
+    X2 is (-B + sqrt(D)) / (2*A),
+    X = [X1, X2].
+    
+trojmian(A, B, C, X) :-
+    delta(A, B, C, D),
+    D = 0,
+    X0 is -B / (2*A),
+    X = [X0].
+    
+trojmian(A, B, C, X) :-
+    delta(A, B, C, D),
+    D < 0,
+    X = [].
+    
+/*
+1 ?- trojmian(-1,0,1,X).
+X = [1.0, -1.0] ;
+false.
+
+2 ?- trojmian(1,-2,1,X).
+X = [1] ;
+false.
+
+3 ?- trojmian(1,0,1,X).
+X = [].
+*/
+
+
+trojmian2(A, B, C, X) :-
+    delta(A, B, C, D),
+    D > 0,
+    X1 is (-B - sqrt(D)) / (2*A),
+    X2 is (-B + sqrt(D)) / (2*A),
+    X = [X1, X2],
+    !.
+    
+trojmian2(A, B, C, X) :-
+    delta(A, B, C, D),
+    D = 0,
+    X0 is -B / (2*A),
+    X = [X0],
+    !.
+    
+trojmian2(_, _, _, []).
+
+/*
+6 ?- trojmian2(-1,0,1,X).
+X = [1.0, -1.0].
+
+7 ?- trojmian2(1,0,1,X).
+X = [].
+
+8 ?- trojmian2(1,-2,1,X).
+X = [1].
+*/
+
+% 8.7
+
+/*
+11 ?- between(1,5,X).
+X = 1 ;
+X = 2 ;
+X = 3 ;
+X = 4 ;
+X = 5.
+*/ 
+
+liczba(X) :-
+  between(100, 999, X),
+  X mod 3 =:= 0,
+  X mod 5 =:= 0,
+  X mod 7 =:= 0.
+
+/*
+13 ?- liczba(X).
+X = 105 ;
+X = 210 ;
+X = 315 ;
+X = 420 ;
+X = 525 ;
+X = 630 ;
+X = 735 ;
+X = 840 ;
+X = 945 ;
+false.
 */
