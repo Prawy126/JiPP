@@ -31,14 +31,14 @@ add x (Node y left right)
     | x < y     = Node y (add x left) right  -- Dodajemy do lewego poddrzewa
     | otherwise = Node y left (add x right)  -- Dodajemy do prawego poddrzewa
     
-elemTree :: (Ord a) => a -> Tree a -> Bool
-elemTree _ Null = False  -- Element nie istnieje w pustym drzewie
-elemTree x (Leaf y) = x == y  -- Sprawdzamy liœæ
-elemTree x (Node y left right)
-    | x == y    = True  -- Element znaleziony
-    | x < y     = elemTree x left  -- Szukamy w lewym poddrzewie
-    | otherwise = elemTree x right  -- Szukamy w prawym poddrzewie
-
+elemTree :: Ord a => a -> Tree a-> Bool
+elemTree _ Null = False
+elemTree x (Leaf val) = x == val
+elemTree x (Node val left right)
+  | x == val = True
+  | x < val = elemTree x left
+  | otherwise = elemTree x right
+ 
 countLeaves :: Tree a -> Int
 countLeaves Null = 0  -- Brak liœci w pustym drzewie
 countLeaves (Leaf _) = 1  -- Liœæ to jeden element
