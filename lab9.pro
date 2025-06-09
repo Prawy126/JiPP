@@ -54,12 +54,12 @@ X = [].
 
 /* Task 1
 
-dokonaj analizy wywo³ania take(0, [a,b,c,d], X).
+dokonaj analizy wywoï¿½ania take(0, [a,b,c,d], X).
 
 */
 
 /*
-1. Przebieg z góry do do³u                  1. Przebieg do³u do góry
+1. Przebieg z gï¿½ry do doï¿½u                  1. Przebieg doï¿½u do gï¿½ry
                                                                                      
 * take(2, [a,b,c,d],X) =>                   * take(2, [a,b,c,d],X) => X = [a,b]
   N = 2                                       N = 2                                  
@@ -199,13 +199,13 @@ X = [2, 3].
 */
 
 % 9.6
-% permutation(P, L) -  P jest permutacj¹ listy L
+% permutation(P, L) -  P jest permutacjï¿½ listy L
  
 permutation([], []).
  
 permutation(P, [H|T]) :-
     permutation(P1, T),        
-    append(A, B, P1),      % P1 dzielimy na dwie czêœci 
+    append(A, B, P1),      % P1 dzielimy na dwie czï¿½ci 
     append(A, [H|B], P).   % P powstaje poprzez wstawienie 
                            % elementu H w pewne miejsce listy P1
                            
@@ -245,6 +245,7 @@ s1(X) :-
 X = 5.187377517639621.
 */
 
+<<<<<<< HEAD
 f2(X,Y) :- Y is (1+X)/(2+X).
 
 listProd([X], X).
@@ -262,3 +263,19 @@ p1(X) :-
 1 ?- p1(X).
 X = 0.03846153846153846.
 */
+=======
+f2(X, Y) :- Y is (1 + X) / (2 + X).
+
+
+listProd([X], X).
+listProd([X,Y|T], Prod) :-
+    Z is X * Y,
+    listProd([Z|T], Prod).
+
+
+p1(X) :-
+    numlist(1, 50, L1),
+    maplist(f2, L1, L2),
+    listProd(L2, X),
+    !.
+>>>>>>> refs/remotes/origin/main
