@@ -244,3 +244,21 @@ s1(X) :-
 6 ?- s1(X).
 X = 5.187377517639621.
 */
+
+f2(X,Y) :- Y is (1+X)/(2+X).
+
+listProd([X], X).
+listProd([X,Y|T], Prod) :-
+  Z is X * Y,
+  listProd([Z|T], Prod).
+
+p1(X) :-
+    numlist(1,50,L1),
+    maplist(f2, L1, L2),
+    listProd(L2, X),
+    !.
+
+/*
+1 ?- p1(X).
+X = 0.03846153846153846.
+*/
