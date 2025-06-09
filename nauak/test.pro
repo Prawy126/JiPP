@@ -56,7 +56,7 @@ dobrapizza(Osoba, Pizza) :-
 
 % zadanie 3
 suma(Wynik) :-
-    suma_aux(1, 0, Wynik).
+    suma_aux(2, 0, Wynik).
 
 suma_aux(I, Acc, Wynik) :-
     I =< 1000,
@@ -111,4 +111,17 @@ suma_lista([H|T], Suma) :-
 bez_dwoch_ostatnich(X, Y) :-
     append(Y, [_, _], X).
 
+take(1, [H|_], H) :- !.
+take(N, [_|T],E) :-
+   N > 1,
+   N1 is N - 1,
+   take(N1, T, E).
 
+last([X], X) :- !.
+last([_|T], X) :- last(T,X).
+
+init([_], []) :- !.
+init([H|T], [H|Res]) :- init(T, Res).
+
+append2([], L, L).
+append2([H|T], L2, [H|Res]) :- append(T, L2, Res).
